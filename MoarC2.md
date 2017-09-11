@@ -2,7 +2,7 @@
 
 Second Lecture
 
-Topics: How C Works
+Topics: How C Works, Compilation, Structs, Enums
 
 
 ***
@@ -22,7 +22,7 @@ int main(){
 
 ## Compilation Process
 
-### Steps in C
+### 4 Steps in C
 
 1. Preprocess - Look for # signs
 
@@ -38,4 +38,52 @@ int main(){
 
     `#ifndef [some defined term]` If your term is not defined include the code between the `#ifndef` and `#endif`
 
-    
+    At the end of this you end up with ONE c file
+
+
+    GCC options
+
+    -E just do Preprocessors
+
+    Sidenote: `gcc Intro.c > a.out` overwrite a.out
+
+    Sidenote(2): `gcc Intro.c >> a.out` append to a.out
+
+2. Compilation: File to assembly
+
+    -S to get the assembly
+
+3. Assembly to Binary
+    -c assemble the code to binary
+
+4. Linker
+
+    -o name the out file
+
+Keywords:
+
+
+## Structs
+
+What is a struct?
+
+A collection of vars
+
+```c
+
+struct stats{
+
+    double average;
+    int sum;
+    double stddev;
+} v1;
+
+v1.sum = 10;
+
+```
+
+## enums and unions
+
+enums is like a var with a certain amount of values
+
+union share var space
