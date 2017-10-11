@@ -70,3 +70,35 @@ You unplug the machine to fix the problem
 * Positive num the childs PID
 * You know you are the child if you PID is 0
 * GetPPID <- How child gets parent ID
+* `#include<unistd.h>`
+
+
+## Some weird behavior
+
+What do you think happens?
+```c
+int main(){
+    printf("Answer: %d PID:%d", answer, getpid());
+    fork();
+    return 0;
+}
+```
+
+What is actually printed:
+
+```bash
+$ ./forking
+$ Answer: 42 PID: 24664Answer: 42 PID: 24664
+```
+
+### Why?
+
+* printf puts string in buffer
+* buffer is in memory before actually printed
+* fork copies memory
+* at the end of the process child buffer gets flushed and printed
+
+## Some more funcs
+
+* Need to have a `waitpid(id, &status, 0)` so that child doesn't turn into a zombie
+* 
