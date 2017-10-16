@@ -69,7 +69,7 @@ You unplug the machine to fix the problem
 * -1 if it fails
 * Positive num the childs PID
 * You know you are the child if you PID is 0
-* GetPPID <- How child gets parent ID
+* `getppid()` <- How child gets parent ID
 * `#include<unistd.h>`
 
 
@@ -101,4 +101,5 @@ $ Answer: 42 PID: 24664Answer: 42 PID: 24664
 ## Some more funcs
 
 * Need to have a `waitpid(id, &status, 0)` so that child doesn't turn into a zombie
-* 
+* `waitpid(id, &status, 0)` makes parent wait till child finishs
+*

@@ -10,6 +10,11 @@ Types:
 * struct 3 bytes of padding if one is not at the end
 *
 
+# Memory
+
+BSS is uninitialized globals
+Data initialized globals and string literals
+
 
 # Malloc
 
