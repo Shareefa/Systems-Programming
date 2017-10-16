@@ -119,6 +119,6 @@ Okay like on the off chance someone looks at this that doesn't know the memory m
 | :------------- | :------------- |
 | Stack | 0xffff |
 | Heap| |
-|BSS| |
+|BSS| Unitialized Global variables|
 |Data |Initialized global vars and string literals |
 |Program Text (Op Code)| 0x0000|

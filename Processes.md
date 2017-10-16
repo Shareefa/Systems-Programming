@@ -53,6 +53,8 @@ main(){
 
 ## Everything is copied EXCEPT FILE Descriptors
 
+File descriptors are **shared**
+
 Need to close and reopen or else
 File descriptors will messed up
 
@@ -101,5 +103,43 @@ $ Answer: 42 PID: 24664Answer: 42 PID: 24664
 ## Some more funcs
 
 * Need to have a `waitpid(id, &status, 0)` so that child doesn't turn into a zombie
-* `waitpid(id, &status, 0)` makes parent wait till child finishs
-*
+* `waitpid(id, &status, 0)` makes parent wait till **specific child** finishes
+* Also `wait()` which returns when **any child** finishes
+
+## Orphans vs Zombies
+
+* Orphan: Happens if parent process dies and child still runs takes up resources (**worse** than Zombie)
+* Zombie: child ends after parent no resources but takes up an entry on the process table which has finite space
+
+## Fork() Exec() Wait() Pattern
+
+* you can like put some executable into your child to do
+* child has the same permissions as parent
+* Memory and code is completely replaced by the Exec
+
+## sleep()
+
+* takes current process off process table for x seconds -> `sleep(x)`
+
+## Interrupts/Signals
+
+| Interrupts | Command Line| Description    |
+| :------------- | :------------- |
+| SIGINT       |       |
+| SIGQUIT  |  |
+|SIGSTOP| kill -SIGSTOP [PID] | Just stops it|
+| SIGCONT | kill -SIGCONT [PID] | continues it|
+| SIGKILL| kill or kill -SIGKILL [PID] | murder|
+
+use the commandline utility `kill` to send signals to processes
+
+### Signal Handlers
+
+* You can handle signals received in a program in different ways
+* You can also send signals to other processes
+* Note: you **cannot** kill a process that you are not owner of
+* Sorta like a callback
+
+## Pipes
+
+"I walk into class just to pipe it up"
