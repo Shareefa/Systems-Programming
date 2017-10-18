@@ -1,7 +1,10 @@
 
 # Process
 
-Idk what a process is
+## What is it?
+
+A process is like a copy of the current program from where `fork()` is called
+
 
 But it has it's own memory
 like it's own stack and heap?
@@ -50,6 +53,7 @@ main(){
     printf("hello");
 }
 ```
+* Hello is printed twice
 
 ## Everything is copied EXCEPT FILE Descriptors
 
@@ -122,8 +126,11 @@ $ Answer: 42 PID: 24664Answer: 42 PID: 24664
 ## sleep()
 
 * takes current process off process table for x seconds -> `sleep(x)`
+*
 
-## Interrupts/Signals
+## How to communicate
+
+### Interrupts/Signals
 
 | Interrupts | Command Line| Description    |
 | :------------- | :------------- |:---|
@@ -134,6 +141,7 @@ $ Answer: 42 PID: 24664Answer: 42 PID: 24664
 | SIGKILL| kill or kill -SIGKILL [PID] | murder|
 
 use the commandline utility `kill` to send signals to processes
+* This is only for small amounts of info
 
 ### Signal Handlers
 
@@ -142,6 +150,13 @@ use the commandline utility `kill` to send signals to processes
 * Note: you **cannot** kill a process that you are not owner of
 * Sorta like a callback
 
-## Pipes
+### Pipes
 
 "I walk into class just to pipe it up"
+
+* memory map
+
+## Conclusion
+
+* Not always the best choice
+* Better is multi threaded programming - lightweight process
