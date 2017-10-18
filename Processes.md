@@ -109,13 +109,15 @@ $ Answer: 42 PID: 24664Answer: 42 PID: 24664
 ## Orphans vs Zombies
 
 * Orphan: Happens if parent process dies and child still runs takes up resources (**worse** than Zombie)
-* Zombie: child ends after parent no resources but takes up an entry on the process table which has finite space
+* Zombie: child ends after parent no resources but takes up an entry on the process table which has finite space - created if parent never wait because you need to read the status
+*
 
 ## Fork() Exec() Wait() Pattern
 
 * you can like put some executable into your child to do
 * child has the same permissions as parent
 * Memory and code is completely replaced by the Exec
+* exec() is called in wait
 
 ## sleep()
 
@@ -124,9 +126,9 @@ $ Answer: 42 PID: 24664Answer: 42 PID: 24664
 ## Interrupts/Signals
 
 | Interrupts | Command Line| Description    |
-| :------------- | :------------- |
-| SIGINT       |       |
-| SIGQUIT  |  |
+| :------------- | :------------- |:---|
+| SIGINT       |       | |
+| SIGQUIT  |  | |
 |SIGSTOP| kill -SIGSTOP [PID] | Just stops it|
 | SIGCONT | kill -SIGCONT [PID] | continues it|
 | SIGKILL| kill or kill -SIGKILL [PID] | murder|
