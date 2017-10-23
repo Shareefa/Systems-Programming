@@ -53,5 +53,28 @@ void start_threads() {
      // Join essentially waits for pthread to finish, and start_threads() does not return until that happens
 }
 ```
+__Until pthread_join() is called, nothing actually happens to the thread__
+
+```c
+void* myfunc(void* ptr) {
+    int i= *((int *) ptr);
+    printf("%d ",i);
+    return NULL;
+}
+
+int main() {
+    //create 10 threads calling myfunc with successively higher numbers
+    
+    int i=0;
+    pthread_t tid;
+    
+    for(i = 0; i<10; i++) {                        // i++ causes race condition, so values actually arent printed in order
+        pthread_create(&tid, NULL, myfunc, &i);
+    }
+    
+    pthread_exit(NULL);
+}
+
+```
 
 
