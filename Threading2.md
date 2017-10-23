@@ -13,8 +13,8 @@
         
 __Threads created through clone() as opposed to fork() for processeses__
 
-'''c
-void *busy(void *ptr){
+```c
+void \*busy(void \*ptr){
     puts("hello world");
     return null;
 }
@@ -23,8 +23,8 @@ int main() {
     pthread_t id;
     pthread_create(&id, NULL, busy, "Hi");
     while(1) {} //Loop Forever
-}
-'''
+} 
+```
 
 User Threads   |   Kernel Threads
 --- | ---
