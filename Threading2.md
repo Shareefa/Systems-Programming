@@ -49,6 +49,6 @@ void start_threads() {
      pthread_create(&tid, 0, myfunc, &start);
      pthread_join(tid, &result);
 }
-'''
+```
 
 
