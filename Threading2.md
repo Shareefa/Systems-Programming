@@ -31,3 +31,24 @@ User Threads   |   Kernel Threads
 Scheduled in user space   |   Scheduled in kernel space
 
 
+```c
+// After function returns, function gets taken off the thread, which means start might have 
+// a different address after function gets returned
+pthread_t start_threads() {
+    int start = 42;
+    pthread_t tid;
+    pthread_create(&tid, 0, myfunc, &start);
+    return tid;
+}
+
+// Stack remains until tid exits, which means vars such as start keep same address till end
+void start_threads() {
+     int start = 42;
+     void *result;
+     pthread_t tid;
+     pthread_create(&tid, 0, myfunc, &start);
+     pthread_join(tid, &result);
+}
+'''
+
+
