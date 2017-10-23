@@ -14,7 +14,7 @@
 __Threads created through clone() as opposed to fork() for processeses__
 
 ```c
-void \*busy(void \*ptr){
+void *busy(void *ptr){
     puts("hello world");
     return null;
 }
