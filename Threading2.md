@@ -37,8 +37,10 @@ Scheduled in user space   |   Scheduled in kernel space
 pthread_t start_threads() {
     int start = 42;
     pthread_t tid;
-    pthread_create(&tid, 0, myfunc, &start);
+    pthread_create(&tid, 0, myfunc, &start); //subdivides curr memory space to create space for thread
     return tid;
+    // start_threads() might get returned before myFunc inside create gets run, which means int start
+    // might not have same val
 }
 
 // Stack remains until tid exits, which means vars such as start keep same address till end
@@ -48,6 +50,7 @@ void start_threads() {
      pthread_t tid;
      pthread_create(&tid, 0, myfunc, &start);
      pthread_join(tid, &result);
+     // Join essentially waits for pthread to finish, and start_threads() does not return until that happens
 }
 ```
 
