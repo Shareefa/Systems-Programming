@@ -77,4 +77,30 @@ int main() {
 
 ```
 
+# Things to be careful about __IMPORTANT__
 
+So when different threads are accessing/sharing the same memory timing start to matter
+Two ways to solve that:
+* sleep or join I forgot
+* separate the mem -
+
+# How to exit a multithreaded program
+
+exit ends the process kills all the threads
+
+pthread_exit kills specific create
+
+there was another but I am a bit lost honestly
+
+# Forking and Threading
+
+Fork only makes a copy of the current thread.
+
+If the fork is called in main, the child process will only have the main thread
+If the fork is called in the function called in pthread_create(), it will make a copy of that thread
+
+# Time
+
+* Real time = like literally how long it takes
+* User time = the cumulative time that each processor takes (Ex. 4 processors take 1 sec each, User Time = 4, Real Time = 1)
+* 
