@@ -61,3 +61,50 @@ Focus on the transport and network level
 - traceroute
 -
 
+
+## How do you create a non blocking socket
+
+`fd = socket(AF_INET, SOCk_STREAM | SOCK_NONBLOCK, 0);`
+socket returns a file descriptor
+
+`SOCk_STREAM | SOCK_NONBLOCK` -> open a TCP socket and | makes it a nonblocking by masking it with the bitwise OR
+
+## How to recieve input from a client
+
+1. Create fd = socket(...)
+2. bind(fd, with port and address)
+3. listen(fd, ...)
+4. accept(fd ... )// return fd2 -> loop back to listen
+
+
+
+# Remate Procedure Call
+
+- Make socket communication between machines as seemless as possible
+
+```c
+
+main(){
+  char* a = foo("hello");
+}
+
+foo(char * s){
+  /* series of calls to open socket read write and close then return*/
+
+
+}
+```
+
+## What is the big deal?
+
+### Marshalling
+
+- Endianness, make sure that the architecture  and nonsense so bytes are interpretted properly
+- Linked lists being sent back and forth need to be flattened to be serialized 
+
+
+
+
+
+
+
